@@ -7,12 +7,12 @@
 
 #import "BaseViewController.h"
 #import "HomeTableViewCell.h"
+#import "ProblemDescView.h"
 #import <objc/runtime.h>
 
 @interface BaseViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) UILabel *desLab;
-@property (nonatomic, strong) UIView  *desView;
+@property (nonatomic, strong) ProblemDescView  *desView;
 @end
 
 @implementation BaseViewController
@@ -22,30 +22,24 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.whiteColor;
     
-    [self.view addSubview:self.desLab];
+    [self.view addSubview:self.desView];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(HomeTableViewCell.class) bundle:nil]
          forCellReuseIdentifier:NSStringFromClass(HomeTableViewCell.class)];
+    
+    [self updateDescView:self.pageProblemDesc];
 }
 
--(UIView *)desView{
+-(void)updateDescView:(NSString *)descStr{
+    self.desView.descStr = descStr;
+}
+
+-(ProblemDescView *)desView{
     if (!_desView) {
-        _desView = [[UIView alloc]initWithFrame:CGRectMake(10, 80, self.view.frame.size.width - 20, self.view.frame.size.height - 160)];
+        CGFloat y = self.navigationController.navigationBar.frame.size.height + self.navigationController.navigationBar.frame.origin.y;
+        _desView = [[ProblemDescView alloc]initWithFrame:CGRectMake(10, y, self.view.frame.size.width - 20, self.view.frame.size.height - y - 10)];
     }
     return _desView;
-}
-
--(UILabel *)desLab{
-    if (!_desLab) {
-        _desLab = [[UILabel alloc]initWithFrame:CGRectMake(10, 80, self.view.frame.size.width - 20, self.view.frame.size.height - 160)];
-        _desLab.numberOfLines = 0;
-        _desLab.font = [UIFont systemFontOfSize:15];
-        _desLab.layer.cornerRadius = 5;
-        _desLab.backgroundColor = UIColor.systemGrayColor;
-        _desLab.hidden = self.desc.length <= 0;
-        _desLab.text   = self.desc;
-    }
-    return _desLab;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -68,9 +62,12 @@
     if (targetClass) {
         BaseViewController *targetVC = [[targetClass alloc]init];
         targetVC.title = self.sourceArr[indexPath.row][@"title"];
-        targetVC.desc  = self.sourceArr[indexPath.row][@"desc"];
         [self.navigationController pushViewController:targetVC animated:YES];
     }
+}
+
+-(NSString *)pageProblemDesc{
+    return @"";
 }
 
 -(NSString *)clsName{

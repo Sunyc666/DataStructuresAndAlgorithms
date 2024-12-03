@@ -16,7 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    /*
+     给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+     示例：
+     输入：head = [1,2,3,4,5]
+     输出：[5,4,3,2,1]
+     */
     LinkedListNode *node = [LinkedListNode newWithValues:@[@1,@2,@3]];
     [LinkedListNode logMethod:node target:self.clsName isBefore:YES];
     [LinkedListNode logMethod:[self sortMethod:node] target:self.clsName isBefore:NO];
@@ -42,14 +47,8 @@
     return prev;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(NSString *)pageProblemDesc{
+    return @"给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。\n示例：\n输入：head = [1,2,3,4,5]\n输出：[5,4,3,2,1]";
 }
-*/
 
 @end
