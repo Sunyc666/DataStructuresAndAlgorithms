@@ -36,6 +36,10 @@
                 @{
                     @"title":@"相交链表",
                     @"target":@"LinkedListIntersectVC"
+                },
+                @{
+                    @"title":@"删除链表的倒数第N个节点",
+                    @"target":@"DeleteCountBackwardsVC"
                 }
             ]
         },
@@ -56,6 +60,16 @@
                 @{
                     @"title":@"两数之和",
                     @"target":@"SumOfTwoNumVC"
+                }
+            ]
+        },
+        @{
+            @"title":@"串",
+            @"target":@"BaseViewController",
+            @"subArr":@[
+                @{
+                    @"title":@"和为k的子数组（子串）",
+                    @"target":@"SumOfKArrVC"
                 }
             ]
         }
