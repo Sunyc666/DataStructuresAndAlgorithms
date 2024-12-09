@@ -40,6 +40,10 @@
                 @{
                     @"title":@"删除链表的倒数第N个节点",
                     @"target":@"DeleteCountBackwardsVC"
+                },
+                @{
+                    @"title":@"回文链表",
+                    @"target":@"PalindromeLinkedListVC"
                 }
             ]
         },
