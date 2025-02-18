@@ -24,6 +24,7 @@
     }
 }
 
+
 +(LinkedListNode *)newWithValues:(nonnull NSArray <NSNumber *>*)values{
     LinkedListNode *head   = [LinkedListNode newWithValue:-1];
     LinkedListNode *before = head;
